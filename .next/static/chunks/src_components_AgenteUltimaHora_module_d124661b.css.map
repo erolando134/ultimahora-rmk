@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/LachiPro/Documents/UltimaHoraFirebase/src/components/AgenteUltimaHora.module.css"],"sourcesContent":[".contenedor {\r\n  position: fixed;\r\n  bottom: 20px;\r\n  right: 20px;\r\n  z-index: 50;\r\n  max-width: 300px;\r\n  width: 100%;\r\n}\r\n\r\n.imagenClickable {\r\n  cursor: pointer;\r\n  position: relative;\r\n  z-index: 50;\r\n}\r\n\r\n.burbujaTexto {\r\n  position: absolute;\r\n  bottom: 100%;\r\n  left: 0;\r\n  background-color: #fff;\r\n  padding: 8px 12px;\r\n  border-radius: 12px;\r\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);\r\n  font-size: 0.9rem;\r\n  margin-bottom: 8px;\r\n  white-space: nowrap;\r\n  z-index: 50;\r\n}\r\n\r\n.panelEmergente {\r\n  position: absolute;\r\n  bottom: 110%;\r\n  right: 0;\r\n  z-index: 60;\r\n}\r\n\r\n/* 🚖 Estilo del taxi animado */\r\n.taxi {\r\n  position: fixed;\r\n  bottom: 24px;\r\n  left: 0;\r\n  width: 120px;\r\n  z-index: 40;\r\n}\r\n"],"names":[],"mappings":"AAAA;;;;;;;;;AASA;;;;;;AAMA;;;;;;;;;;;;;;AAcA;;;;;;;AAQA","debugId":null}}]
-}
