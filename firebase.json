@@ -1,0 +1,36 @@
+{
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "hosting": {
+    "public": "out",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "cleanUrls": true,
+    "rewrites": [
+      {
+        "source": "/api/**",
+        "destination": "https://ultima-hora-cbf1jw07m-rolando-espinosas-projects.vercel.app/api/**"
+      },
+      {
+        "source": "/cliente/chat/**",
+        "destination": "https://ultima-hora-cbf1jw07m-rolando-espinosas-projects.vercel.app/cliente/chat/**"
+      },
+      {
+        "source": "/servicios/modo/**",
+        "destination": "https://ultima-hora-cbf1jw07m-rolando-espinosas-projects.vercel.app/servicios/modo/**"
+      },
+      {
+        "source": "/cliente/mis-solicitudes/**",
+        "destination": "https://ultima-hora-cbf1jw07m-rolando-espinosas-projects.vercel.app/cliente/mis-solicitudes/**"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

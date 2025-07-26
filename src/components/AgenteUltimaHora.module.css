@@ -1,0 +1,44 @@
+.contenedor {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 50;
+  max-width: 300px;
+  width: 100%;
+}
+
+.imagenClickable {
+  cursor: pointer;
+  position: relative;
+  z-index: 50;
+}
+
+.burbujaTexto {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background-color: #fff;
+  padding: 8px 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  z-index: 50;
+}
+
+.panelEmergente {
+  position: absolute;
+  bottom: 110%;
+  right: 0;
+  z-index: 60;
+}
+
+/* 🚖 Estilo del taxi animado */
+.taxi {
+  position: fixed;
+  bottom: 24px;
+  left: 0;
+  width: 120px;
+  z-index: 40;
+}

@@ -1,0 +1,46 @@
+/* [project]/src/components/AgenteUltimaHora.module.css [app-client] (css) */
+.AgenteUltimaHora-module__eK2aXG__contenedor {
+  z-index: 50;
+  width: 100%;
+  max-width: 300px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.AgenteUltimaHora-module__eK2aXG__imagenClickable {
+  cursor: pointer;
+  z-index: 50;
+  position: relative;
+}
+
+.AgenteUltimaHora-module__eK2aXG__burbujaTexto {
+  white-space: nowrap;
+  z-index: 50;
+  background-color: #fff;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  font-size: .9rem;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+}
+
+.AgenteUltimaHora-module__eK2aXG__panelEmergente {
+  z-index: 60;
+  position: absolute;
+  bottom: 110%;
+  right: 0;
+}
+
+.AgenteUltimaHora-module__eK2aXG__taxi {
+  z-index: 40;
+  width: 120px;
+  position: fixed;
+  bottom: 24px;
+  left: 0;
+}
+
+/*# sourceMappingURL=src_components_AgenteUltimaHora_module_d124661b.css.map*/

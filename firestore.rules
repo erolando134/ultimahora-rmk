@@ -1,0 +1,56 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Función para verificar si un usuario está autenticado
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Reglas para la colección 'drivers'
+    match /drivers/{driverId} {
+      // Cualquiera puede leer los datos públicos de un chófer (ej. para ver perfiles)
+      allow read: if true;
+      // Solo el propio chófer o un administrador pueden crear o actualizar su perfil
+      allow write: if isSignedIn() && (request.auth.uid == driverId || get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true);
+    }
+    
+    // Reglas para la colección 'clients' (si la tuvieras)
+    match /clients/{clientId} {
+       allow read, write: if isSignedIn() && request.auth.uid == clientId;
+    }
+
+    // Reglas para la colección de 'chats'
+    match /chats/{chatId} {
+      // El cliente o el chófer involucrados en el chat, o un admin, pueden leerlo
+      allow read: if isSignedIn() && (request.auth.uid == resource.data.clientId || request.auth.uid == resource.data.driverId || get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true);
+      // Cualquiera autenticado puede crear un chat (solicitar un servicio)
+      allow create: if isSignedIn();
+      // El cliente o el chófer del chat pueden actualizarlo (enviar mensajes, completar viaje)
+      allow update: if isSignedIn() && (request.auth.uid == resource.data.clientId || request.auth.uid == resource.data.driverId);
+    }
+
+    // Reglas para la colección 'transactions'
+    match /transactions/{transactionId} {
+        // Nadie puede leer las transacciones directamente, son para auditoría interna
+        allow read: if false;
+        // Solo el código (en este caso, desde el cliente en una transacción) puede crear un registro de transacción
+        // La regla de seguridad aquí verifica la integridad de los datos
+        allow create: if isSignedIn() &&
+                        request.resource.data.driverId == request.auth.uid && // El chófer que crea la transacción es el autenticado
+                        request.resource.data.amount < 0 && // La comisión siempre es un número negativo
+                        request.resource.data.type == "commission"; // El tipo debe ser 'commission'
+        // Las transacciones son inmutables
+        allow update, delete: if false;
+    }
+
+    // Reglas para la colección de usuarios (para roles)
+    match /users/{userId} {
+        // Solo el propio usuario o un admin puede leer su documento de rol
+        allow read: if isSignedIn() && (request.auth.uid == userId || get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true);
+        // Solo un administrador puede escribir en los roles de los usuarios
+        allow write: if isSignedIn() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+    }
+  }
+}
